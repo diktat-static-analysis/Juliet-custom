@@ -1,0 +1,22 @@
+[general]
+    tags = ["juliet"]
+    description = "Juliet tests"
+    suiteName = "juliet 1"
+    execCmd = "../src/pmd-bin-6.40.0/bin/run.sh pmd -R category/java/security.xml -f text -d"
+    expectedWarningsPattern = "/\\* FLAW:(\\d*)? (.+)"
+    expectedWarningsMiddlePattern = "\\* (.*)"
+    expectedWarningsEndPattern = "(.*)?\\*/"
+    timeOutMillis = 30000
+
+[warn]
+    testNameRegex = "CWE.*java"
+    actualWarningsPattern = "(\\w+\\.java):(\\d+):\\s+(.*)$"
+    lineCaptureGroup = 1
+    messageCaptureGroup = 2
+    fileNameCaptureGroupOut = 1
+    lineCaptureGroupOut = 2
+    messageCaptureGroupOut = 3
+    warningTextHasLine = true
+    warningTextHasColumn = false
+    exactWarningsMatch = false
+    benchmarkMode = true
